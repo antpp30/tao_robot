@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Setup Rosserial Node-->
+    <include file ="$(find rosserial_python)/launch/serial.launch"/>
+    
+    <!-- Tao model & tf -->
+    <include file ="$(find tao_description)/launch/tao_model.launch"/>
+
+    <!-- Setup Odometry Boardcast Node-->
+    <node pkg="tao_fromlowlevel" name="odomBoardcast_node" type="odomBoardcast_node.py"/>
+    
+</launch>

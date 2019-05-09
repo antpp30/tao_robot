@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!-- Setup tao_model.launch -->
+	<include file ="$(find tao_description)/launch/tao_model.launch"/>
+	
+	<!-- Rviz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tao_description)/rviz/tao.rviz" required="true" />
+
+</launch>

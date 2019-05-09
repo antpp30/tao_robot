@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<launch>	
+
+ 	<!-- Setup tao_fromlowlevel.launch -->
+	<include file ="$(find tao_fromlowlevel)/launch/tao_fromlowlevel.launch"/>
+  
+	<!-- YDlidar -->
+	<include file ="$(find ydlidar)/launch/lidar.launch"/>
+
+	<!-- amcl_add_map -->
+	 <node name="map_server" pkg="map_server" type="map_server" args="/home/thanachot/ttar/src/tao_maps/mapF5_2.yaml"/> 
+ 	
+ 	 <!-- amcl_differential_drive -->
+	 <include file ="$(find amcl)/examples/amcl_diff.launch"/> 
+
+	 <!-- Publishes the voxel grid to rviz for display -->
+  	<node pkg="costmap_2d" type="costmap_2d_markers" name="voxel_visualizer">
+    <remap from="voxel_grid" to="costmap/voxel_grid"/>
+  	</node>
+
+  	<!-- Run the costmap node -->
+  	<node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" >
+    <rosparam file="$(find costmap_malao)/launch/ex/example_params.yaml" command="load" ns="costmap" />
+  	</node>
+
+	<!-- Rviz -->
+	<node name="rviz" pkg="rviz" type="rviz"/>
+
+
+
+
+
+    
+</launch>
+

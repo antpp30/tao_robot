@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>	
+
+ 	<!-- Setup tao_fromlowlevel.launch -->
+	<include file ="$(find tao_fromlowlevel)/launch/tao_fromlowlevel.launch"/>
+  
+	<!-- YDlidar -->
+	<include file ="$(find ydlidar)/launch/lidar.launch"/>
+
+	<!-- amcl_add_map -->
+	 <node name="map_server" pkg="map_server" type="map_server" args="/home/thanachot/ttar/src/tao_maps/mapF5_2.yaml"/> 
+ 	
+ 	 <!-- amcl_differential_drive -->
+	 <include file ="$(find amcl)/examples/amcl_diff.launch"/> 
+
+	 <!-- move base -->
+  	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    
+    <param name="base_global_planner" value="carrot_planner/CarrotPlanner"/>
+
+    <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/costmap_common.yaml" 
+    	command="load" ns="global_costmap"/>
+
+    <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/costmap_common.yaml" 
+    	command="load" ns="local_costmap"/>
+
+    <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/local_costmap.yaml" 
+    	command="load"/>
+
+    <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/global_costmap.yaml" 
+    	command="load"/>
+
+    <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/base_local_planner.yaml" 
+    	command="load"/>
+
+  	</node>
+
+  		<!-- Rviz -->
+	<node name="rviz" pkg="rviz" type="rviz"/>
+
+
+
+    
+</launch>
+

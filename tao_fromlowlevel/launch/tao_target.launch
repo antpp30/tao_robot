@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Setup Rosserial Node-->
+    	<include file ="$(find rosserial_python)/launch/serial.launch"/>
+
+	<!-- Setup tao_fromlowlevel.launch -->
+	<!-- <include file ="$(find tao_fromlowlevel)/launch/tao_fromlowlevel.launch"/> -->
+
+    	<!-- Setup Odometry Boardcast Node-->
+    	<node pkg="tao_fromlowlevel" name="odomBoardcast_node" type="odomBoardcast_node.py"/>
+
+    	<!-- Setup Target Node-->
+    	<node pkg="tao_fromlowlevel" name="target_node" type="odom_testPos.py"/>    
+	
+	<!-- Rviz -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tao_fromlowlevel)/rviz/tao.rviz" required="true" />
+    
+</launch>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+ 	<arg name="model" />
+ 	<param name="robot_description" textfile="$(find tao_description)/urdf/tao.urdf" />
+ 	<param name="use_gui" value="true"/>
+	
+	<node pkg="tf" type="static_transform_publisher" name="left_link" args="0 0.145 0.028 -3.14159 0 1.5708  base_link left_link 100" />
+
+	<node pkg="tf" type="static_transform_publisher" name="right_link" args="0 -0.145 0.028 0 0 1.5708  base_link right_link 100" />
+
+ 	<node name="joint_state_publisher" pkg="joint_state_publisher"
+type="joint_state_publisher" />
+ 	<node name="robot_state_publisher" pkg="robot_state_publisher"
+	type="state_publisher" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tao_description)/rviz/tao.rviz" required="true" />
+
+</launch>

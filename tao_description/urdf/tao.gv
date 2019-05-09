@@ -1,0 +1,14 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"laser_link" [label="laser_link"];
+"left_link" [label="left_link"];
+"right_link" [label="right_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "laser_joint" [label="xyz: 0.16319 0.0013567 0.1855 \nrpy: -5.4448e-33 -4.8363e-35 -2.6055e-17"]
+"laser_joint" -> "laser_link"
+"base_link" -> "left_joint" [label="xyz: 0 0.145 0.028 \nrpy: 1.5708 -1.2246e-16 -3.14159"]
+"left_joint" -> "left_link"
+"base_link" -> "right_joint" [label="xyz: 0 -0.145 0.028 \nrpy: 1.5708 1.2246e-16 -7.39557e-32"]
+"right_joint" -> "right_link"
+}
