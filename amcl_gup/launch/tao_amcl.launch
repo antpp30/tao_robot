@@ -15,7 +15,7 @@
  	
  	 <!-- amcl_differential_drive -->
 	 <include file ="$(find amcl)/examples/amcl_diff.launch"/> 
-
+	 
 
 	<!-- Rviz -->
 	<node name="rviz" pkg="rviz" type="rviz"/>

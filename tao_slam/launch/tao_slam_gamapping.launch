@@ -8,14 +8,14 @@
 	<include file ="$(find ydlidar)/launch/lidar.launch"/>
 
 	<!-- Setup slam_gmapping.launch -->
- 	<!-- <include file ="$(find tao_slam)/launch/slam_gmapping.launch"/> -->
+ 	<include file ="$(find tao_slam)/launch/slam_gmapping.launch"/> 
 
  	
  	
 
 
 	<!-- Rviz -->
-	<!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tao_slam)/rviz/tao.rviz" required="true" />7 -->
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tao_slam)/rviz/tao.rviz" required="true" />
 
 
 

@@ -11,12 +11,24 @@
 	 <node name="map_server" pkg="map_server" type="map_server" args="/home/thanachot/ttar/src/tao_maps/floor2.yaml"/> 
  	
  	 <!-- amcl_differential_drive -->
-	 <include file ="$(find amcl)/examples/amcl_diff.launch"/> 
-
+	 <include file ="$(find goal_pos)/launch/amcl.launch"/>
+   
 	 <!-- move base -->
   	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <!--<param name="controller_frequency" value="5.0"/> global_planner/GlobalPlanner-->
     
-    <param name="base_global_planner" value="carrot_planner/CarrotPlanner"/>
+    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>  
+    <param name="GlobalPlanner/use_dijkstra" value="true"/>
+    <!--<param name="GlobalPlanner/allow_unknown" value="true"/>
+    <param name="GlobalPlanner/use_quadratic" value="true"/>
+    <param name="GlobalPlanner/use_grid_path" value="false"/>
+    <param name="GlobalPlanner/old_navfn_behavior" value="false"/>
+    <param name="GlobalPlanner/visualize_potential" value="true"/>
+    <param name="GlobalPlanner/cost_factor" type="double" value="0.55"/>
+    <param name="GlobalPlanner/neutral_cost" type="int" value="66"/>
+    <param name="GlobalPlanner/lethal_cost" type="int" value="253"/> -->
+
 
     <rosparam file="/home/thanachot/ttar/src/costmap_malao/launch/costmap_common.yaml" 
     	command="load" ns="global_costmap"/>
@@ -35,8 +47,10 @@
 
   	</node>
 
+  	 <node pkg="goal_pos" type="tao_ui.py" name="tao_ui"/> 
+
   		<!-- Rviz -->
-	<node name="rviz" pkg="rviz" type="rviz"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find goal_pos)/rviz/rviz.rviz" required="true"/>
 
 
 
