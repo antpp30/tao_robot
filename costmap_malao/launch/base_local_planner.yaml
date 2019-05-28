@@ -1,8 +1,13 @@
 TrajectoryPlannerROS:
 
-  xy_goal_tolerance: 0.5
+  xy_goal_tolerance: 0.6
   yaw_goal_tolerance: 0.3
 
+  #pdist_scale: 0.6
+  #gdist_scale: 0.8
+  #occdist_scale: 0.01
+
+  sim_time: 5.0
   max_vel_x: 0.3
   min_vel_x: 0.2
   max_vel_theta: 0.3

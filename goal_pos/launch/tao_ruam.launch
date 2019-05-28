@@ -19,8 +19,8 @@
     <!--<param name="controller_frequency" value="5.0"/> global_planner/GlobalPlanner-->
     
     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>  
-    <param name="GlobalPlanner/use_dijkstra" value="true"/>
-    <!--<param name="GlobalPlanner/allow_unknown" value="true"/>
+    <!--param name="GlobalPlanner/use_dijkstra" value="true"/>
+    <param name="GlobalPlanner/allow_unknown" value="true"/>
     <param name="GlobalPlanner/use_quadratic" value="true"/>
     <param name="GlobalPlanner/use_grid_path" value="false"/>
     <param name="GlobalPlanner/old_navfn_behavior" value="false"/>
